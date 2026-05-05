@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>垃圾分類識別</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">垃圾分類 AI</p>
+        <h1>手機垃圾分類</h1>
+      </div>
+      <p class="intro">使用相機或上傳照片，立即辨識垃圾類別並顯示結果。</p>
+    </header>
+
+    <section class="actions-panel">
+      <div class="button-row">
+        <button id="start-camera" class="primary-button">啟動相機</button>
+        <label class="primary-button file-label">
+          上傳照片
+          <input id="image-upload" type="file" accept="image/*" capture="environment" />
+        </label>
+      </div>
+      <p id="status-text" class="status-text">正在載入模型，請稍候…</p>
+    </section>
+
+    <section class="media-panel">
+      <div class="preview-card">
+        <div class="preview-title">相機預覽</div>
+        <video id="video-preview" autoplay muted playsinline></video>
+        <button id="capture-photo" class="secondary-button" disabled>拍照辨識</button>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-title">影像結果</div>
+        <img id="photo-preview" alt="照片預覽" />
+        <canvas id="hidden-canvas" hidden></canvas>
+      </div>
+    </section>
+
+    <section class="result-panel">
+      <div class="result-header">
+        <h2>辨識結果</h2>
+      </div>
+      <ul id="prediction-list" class="prediction-list"></ul>
+      <div id="tips" class="tips-card">
+        <strong>提示：</strong>
+        <p>若結果不準確，請換角度拍攝或更換不同光源。你也可以直接上傳照片。</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.4-alpha2/dist/teachablemachine-image.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
